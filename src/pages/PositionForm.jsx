@@ -154,71 +154,84 @@ export default function PositionForm() {
     </div>
   );
 
-  return (
-    <DashboardLayout>
-      <div className="max-w-3xl mx-auto">
-        {/* Header */}
-        <div className="mb-6">
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={() => navigate('/positions')}
-            className="mb-4"
-          >
-            <ChevronLeft className="w-4 h-4 mr-1" />
-            Back to Positions
-          </Button>
-          <h1 className="text-2xl font-semibold text-foreground">
-            {isEditing ? 'Edit Position' : 'Create New Position'}
-          </h1>
-          <p className="text-muted-foreground mt-1">
-            {isEditing ? 'Update position details' : 'Fill in the details to create a new position'}
-          </p>
-        </div>
+   return (
+     <DashboardLayout>
+       <div className="max-w-4xl mx-auto">
+         {/* Header */}
+         <div className="mb-8">
+           <Button 
+             variant="ghost" 
+             size="sm" 
+             onClick={() => navigate('/positions')}
+             className="mb-4 -ml-2"
+           >
+             <ChevronLeft className="w-4 h-4 mr-1" />
+             Back to Positions
+           </Button>
+           
+           {isEditing && (
+             <div className="mb-4 p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-center gap-3">
+               <div className="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center">
+                 <Settings className="w-4 h-4 text-amber-600" />
+               </div>
+               <p className="text-sm text-amber-800 font-medium">You are editing an existing position</p>
+             </div>
+           )}
+           
+           <h1 className="text-3xl font-bold text-foreground">
+             {isEditing ? 'Edit Position' : 'Create New Position'}
+           </h1>
+           <p className="text-muted-foreground mt-2 text-lg">
+             {isEditing ? 'Update position details below' : 'Fill in the details to create a new hiring position'}
+           </p>
+         </div>
 
         {/* Stepper */}
         {renderStepIndicator()}
 
-        {/* Form Card */}
-        <div className="bg-card rounded-lg border border-border p-6 shadow-sm">
-          {/* Step 1: Position Details */}
-          {currentStep === 1 && (
-            <div className="space-y-5 animate-fade-in">
-              <div className="flex items-center gap-2 text-primary mb-4">
-                <Briefcase className="w-5 h-5" />
-                <span className="font-medium">Position Details</span>
-              </div>
+         {/* Form Card */}
+         <div className="form-section">
+           {/* Step 1: Position Details */}
+           {currentStep === 1 && (
+             <div className="space-y-6 animate-fade-in">
+               <div className="form-section-header">
+                 <div className="form-section-icon">
+                   <Briefcase className="w-5 h-5 text-primary" />
+                 </div>
+                 <div>
+                   <h3 className="font-semibold text-foreground">Position Details</h3>
+                   <p className="text-sm text-muted-foreground">Basic information about this role</p>
+                 </div>
+               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="title">Position Title *</Label>
-                <Input
-                  id="title"
-                  placeholder="e.g., Senior Software Engineer"
-                  value={formData.title}
-                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  className={errors.title ? 'border-destructive' : ''}
-                />
+                   <Label htmlFor="title">Position Title *</Label>
+                   <Input
+                     id="title"
+                     placeholder="e.g., Senior Software Engineer"
+                     className={`h-12 rounded-xl ${errors.title ? 'border-destructive' : ''}`}
+                     value={formData.title}
+                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                   />
                 {errors.title && <p className="text-sm text-destructive">{errors.title}</p>}
               </div>
 
-              <div className="space-y-2">
-                <Label>Category *</Label>
-                <div className="flex flex-wrap gap-2">
-                  {CATEGORIES.map((cat) => (
-                    <button
-                      key={cat}
-                      type="button"
-                      onClick={() => setFormData({ ...formData, category: cat })}
-                      className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all
-                        ${formData.category === cat
-                          ? 'bg-primary text-primary-foreground'
-                          : 'bg-secondary text-secondary-foreground hover:bg-accent'
-                        }`}
-                    >
-                      {cat}
-                    </button>
-                  ))}
-                </div>
+               <div className="space-y-3">
+                 <Label>Category *</Label>
+                 <div className="flex flex-wrap gap-2">
+                   {CATEGORIES.map((cat) => (
+                     <button
+                       key={cat}
+                       type="button"
+                       onClick={() => setFormData({ ...formData, category: cat })}
+                       className={`pill-button ${
+                         formData.category === cat ? 'pill-button-active' : 'pill-button-inactive'
+                       }`}
+                     >
+                       {cat}
+                     </button>
+                   ))}
+                 </div>
                 {errors.category && <p className="text-sm text-destructive">{errors.category}</p>}
               </div>
 
@@ -363,25 +376,25 @@ export default function PositionForm() {
             </div>
           )}
 
-          {/* Navigation */}
-          <div className="flex gap-3 mt-8 pt-6 border-t border-border">
-            {currentStep > 1 && (
-              <Button variant="outline" onClick={handleBack} className="flex-1">
-                <ChevronLeft className="w-4 h-4 mr-1" />
-                Back
-              </Button>
-            )}
-            {currentStep < 3 ? (
-              <Button onClick={handleNext} className="flex-1">
-                Next
-                <ChevronRight className="w-4 h-4 ml-1" />
-              </Button>
-            ) : (
-              <Button onClick={handleSubmit} disabled={isSubmitting} className="flex-1">
-                {isSubmitting ? 'Saving...' : isEditing ? 'Update Position' : 'Create Position'}
-              </Button>
-            )}
-          </div>
+           {/* Navigation */}
+           <div className="flex gap-4 mt-10 pt-8 border-t border-border">
+             {currentStep > 1 && (
+               <Button variant="outline" onClick={handleBack} className="h-12 px-6 rounded-xl">
+                 <ChevronLeft className="w-4 h-4 mr-1" />
+                 Back
+               </Button>
+             )}
+             {currentStep < 3 ? (
+               <Button onClick={handleNext} className="flex-1 h-12 rounded-xl font-semibold">
+                 Continue to Next Step
+                 <ChevronRight className="w-4 h-4 ml-2" />
+               </Button>
+             ) : (
+               <Button onClick={handleSubmit} disabled={isSubmitting} className="flex-1 h-12 rounded-xl font-semibold">
+                 {isSubmitting ? 'Saving...' : isEditing ? 'Update Position' : 'Create Position'}
+               </Button>
+             )}
+           </div>
         </div>
       </div>
     </DashboardLayout>

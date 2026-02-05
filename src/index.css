@@ -1,233 +1,402 @@
- @import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600;700&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&display=swap');
  
  @tailwind base;
  @tailwind components;
  @tailwind utilities;
  
- /* Straatix Partners Design System
-    Enterprise hiring portal - calm, consulting-grade aesthetic
-    All colors in HSL
- */
-
-@layer base {
-  :root {
-    /* Straatix Navy Brand Palette */
-    --background: 210 20% 98%;
-    --foreground: 210 50% 15%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 210 50% 15%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 210 50% 15%;
-
-    /* Deep Navy Primary */
-    --primary: 210 70% 18%;
-    --primary-foreground: 210 20% 98%;
-
-    /* Soft Slate Secondary */
-    --secondary: 210 15% 94%;
-    --secondary-foreground: 210 50% 25%;
-
-    --muted: 210 15% 96%;
-    --muted-foreground: 210 15% 45%;
-
-    /* Warm Accent */
-    --accent: 210 25% 90%;
-    --accent-foreground: 210 50% 20%;
-
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 210 20% 90%;
-    --input: 210 20% 90%;
-    --ring: 210 70% 35%;
-
-    --radius: 0.5rem;
-
-    /* Straatix Extended Palette */
-    --navy-900: 210 70% 12%;
-    --navy-800: 210 70% 18%;
-    --navy-700: 210 65% 25%;
-    --navy-600: 210 55% 35%;
-    --navy-500: 210 45% 45%;
-    --navy-400: 210 35% 55%;
-    --navy-300: 210 25% 70%;
-    --navy-200: 210 20% 85%;
-    --navy-100: 210 15% 94%;
-    --navy-50: 210 20% 98%;
-
-    /* Status Colors */
-    --success: 152 60% 40%;
-    --success-foreground: 0 0% 100%;
-    --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 100%;
-    --info: 210 70% 50%;
-    --info-foreground: 0 0% 100%;
-
-    /* Sidebar */
-    --sidebar-background: 210 70% 18%;
-    --sidebar-foreground: 210 20% 95%;
-    --sidebar-primary: 210 70% 25%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 60% 22%;
-    --sidebar-accent-foreground: 210 20% 95%;
-    --sidebar-border: 210 50% 25%;
-    --sidebar-ring: 210 70% 50%;
-  }
-
-  .dark {
-    --background: 210 50% 8%;
-    --foreground: 210 20% 95%;
-
-    --card: 210 45% 12%;
-    --card-foreground: 210 20% 95%;
-
-    --popover: 210 45% 12%;
-    --popover-foreground: 210 20% 95%;
-
-    --primary: 210 60% 60%;
-    --primary-foreground: 210 50% 10%;
-
-    --secondary: 210 30% 18%;
-    --secondary-foreground: 210 20% 90%;
-
-    --muted: 210 30% 15%;
-    --muted-foreground: 210 15% 60%;
-
-    --accent: 210 35% 20%;
-    --accent-foreground: 210 20% 95%;
-
-    --destructive: 0 62% 45%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 210 30% 20%;
-    --input: 210 30% 20%;
-    --ring: 210 60% 50%;
-
-    --sidebar-background: 210 50% 6%;
-    --sidebar-foreground: 210 20% 90%;
-    --sidebar-primary: 210 60% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 40% 15%;
-    --sidebar-accent-foreground: 210 20% 90%;
-    --sidebar-border: 210 30% 15%;
-    --sidebar-ring: 210 60% 50%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
+ /* ═══════════════════════════════════════════════════════════════════════════
+    STRAATIX PARTNERS DESIGN SYSTEM
+    Premium Enterprise Hiring Portal | Calm, Consulting-Grade, Elite SaaS
+    ═══════════════════════════════════════════════════════════════════════════ */
+ 
+ @layer base {
+   :root {
+     /* ─────────────────────────────────────────────────────────────────────────
+        CORE BRAND COLORS - Premium Navy Palette
+        ───────────────────────────────────────────────────────────────────────── */
+     --primary: 209 61% 16%;
+     --primary-foreground: 0 0% 100%;
+     
+     /* ─────────────────────────────────────────────────────────────────────────
+        BACKGROUNDS - Refined warm neutrals
+        ───────────────────────────────────────────────────────────────────────── */
+     --background: 220 20% 97%;
+     --foreground: 209 61% 12%;
+     
+     /* ─────────────────────────────────────────────────────────────────────────
+        SURFACES - Card and elevated elements
+        ───────────────────────────────────────────────────────────────────────── */
+     --card: 0 0% 100%;
+     --card-foreground: 209 61% 12%;
+     --popover: 0 0% 100%;
+     --popover-foreground: 209 61% 12%;
+     
+     /* ─────────────────────────────────────────────────────────────────────────
+        MUTED - Subtle background tones
+        ───────────────────────────────────────────────────────────────────────── */
+     --muted: 220 14% 93%;
+     --muted-foreground: 220 9% 46%;
+     
+     /* ─────────────────────────────────────────────────────────────────────────
+        ACCENT & SECONDARY
+        ───────────────────────────────────────────────────────────────────────── */
+     --accent: 215 25% 93%;
+     --accent-foreground: 209 61% 16%;
+     --secondary: 220 14% 94%;
+     --secondary-foreground: 209 61% 20%;
+     
+     /* ─────────────────────────────────────────────────────────────────────────
+        INTERACTIVE - Borders, inputs, focus rings
+        ───────────────────────────────────────────────────────────────────────── */
+     --border: 220 13% 90%;
+     --input: 220 13% 88%;
+     --ring: 209 61% 20%;
+     
+     /* ─────────────────────────────────────────────────────────────────────────
+        STATUS COLORS - Semantic feedback
+        ───────────────────────────────────────────────────────────────────────── */
+     --destructive: 0 72% 51%;
+     --destructive-foreground: 0 0% 100%;
+     --success: 152 69% 31%;
+     --success-foreground: 0 0% 100%;
+     --warning: 38 92% 50%;
+     --warning-foreground: 38 92% 20%;
+     --info: 217 91% 60%;
+     --info-foreground: 0 0% 100%;
+     
+     /* ─────────────────────────────────────────────────────────────────────────
+        SIDEBAR - Premium dark navigation
+        ───────────────────────────────────────────────────────────────────────── */
+     --sidebar: 209 61% 14%;
+     --sidebar-foreground: 220 14% 96%;
+     --sidebar-accent: 209 55% 22%;
+     --sidebar-accent-foreground: 0 0% 100%;
+     --sidebar-border: 209 50% 20%;
+     --sidebar-muted: 209 40% 30%;
+     
+     /* ─────────────────────────────────────────────────────────────────────────
+        EXTENDED NAVY PALETTE
+        ───────────────────────────────────────────────────────────────────────── */
+     --navy-50: 220 20% 97%;
+     --navy-100: 220 14% 93%;
+     --navy-200: 215 25% 85%;
+     --navy-300: 209 30% 70%;
+     --navy-400: 209 40% 50%;
+     --navy-500: 209 50% 35%;
+     --navy-600: 209 55% 25%;
+     --navy-700: 209 60% 20%;
+     --navy-800: 209 61% 16%;
+     --navy-900: 209 61% 12%;
+     
+     /* ─────────────────────────────────────────────────────────────────────────
+        CHART COLORS
+        ───────────────────────────────────────────────────────────────────────── */
+     --chart-1: 209 61% 30%;
+     --chart-2: 152 69% 36%;
+     --chart-3: 38 92% 50%;
+     --chart-4: 260 55% 55%;
+     --chart-5: 340 65% 50%;
+     
+     --radius: 0.75rem;
+   }
+ 
+   .dark {
+     --background: 209 61% 6%;
+     --foreground: 220 14% 96%;
+     --card: 209 55% 10%;
+     --card-foreground: 220 14% 96%;
+     --popover: 209 55% 10%;
+     --popover-foreground: 220 14% 96%;
+     --primary: 217 91% 60%;
+     --primary-foreground: 0 0% 100%;
+     --secondary: 209 45% 15%;
+     --secondary-foreground: 220 14% 96%;
+     --muted: 209 45% 14%;
+     --muted-foreground: 220 9% 60%;
+     --accent: 209 45% 18%;
+     --accent-foreground: 220 14% 96%;
+     --border: 209 40% 18%;
+     --input: 209 40% 20%;
+     --ring: 217 91% 60%;
+     --sidebar: 209 61% 8%;
+     --sidebar-foreground: 220 14% 96%;
+     --sidebar-accent: 209 50% 16%;
+     --sidebar-accent-foreground: 0 0% 100%;
+     --sidebar-border: 209 45% 14%;
+   }
+ }
+ 
+ @layer base {
+   * {
+     @apply border-border;
+   }
+ 
+   body {
      @apply bg-background text-foreground antialiased;
-     font-family: 'Archivo Narrow', sans-serif;
-  }
-}
-
-@layer components {
-  /* Metric Card Variants */
-  .metric-card {
-    @apply bg-card rounded-lg border border-border p-5 shadow-sm transition-all duration-200;
-  }
-  
-  .metric-card:hover {
-    @apply shadow-md border-navy-300;
-  }
-  
-  /* Position Card */
-  .position-card {
-    @apply bg-card rounded-lg border border-border p-5 shadow-sm transition-all duration-200 hover:shadow-md hover:border-navy-300;
-  }
-  
-  /* Candidate Card */
-  .candidate-card {
-    @apply bg-card rounded-lg border border-border p-4 shadow-sm transition-all duration-200 hover:shadow-md hover:border-navy-300;
-  }
-  
-  /* Priority Badges */
-  .badge-high {
-    @apply bg-destructive/10 text-destructive border border-destructive/20;
-  }
-  
-  .badge-medium {
-    @apply bg-warning/10 text-warning border border-warning/20;
-  }
-  
-  .badge-low {
-    @apply bg-success/10 text-success border border-success/20;
-  }
-  
-  /* Stepper */
-  .stepper-step {
-    @apply flex items-center justify-center w-10 h-10 rounded-full border-2 font-semibold text-sm transition-all duration-300;
-  }
-  
-  .stepper-step-active {
-    @apply bg-primary text-primary-foreground border-primary;
-  }
-  
-  .stepper-step-completed {
-    @apply bg-success text-success-foreground border-success;
-  }
-  
-  .stepper-step-pending {
-    @apply bg-muted text-muted-foreground border-border;
-  }
-  
-  .stepper-line {
-    @apply h-0.5 flex-1 mx-3 transition-all duration-300;
-  }
-  
-  .stepper-line-active {
-    @apply bg-primary;
-  }
-  
-  .stepper-line-pending {
-    @apply bg-border;
-  }
-}
-
-@layer utilities {
-  /* Enterprise Shadow */
-  .shadow-enterprise {
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05);
-  }
-  
-  .shadow-enterprise-md {
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-  }
-  
-  /* Fade in animation */
-  .animate-fade-in {
-    animation: fadeIn 0.3s ease-out;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(8px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .animate-slide-in {
-    animation: slideIn 0.4s ease-out;
-  }
-  
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateX(-16px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-}
+     font-family: 'Archivo Narrow', system-ui, sans-serif;
+     font-feature-settings: 'cv11', 'ss01';
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+   }
+ }
+ 
+ /* ═══════════════════════════════════════════════════════════════════════════
+    COMPONENT STYLES
+    ═══════════════════════════════════════════════════════════════════════════ */
+ 
+ @layer components {
+   /* ─────────────────────────────────────────────────────────────────────────
+      PREMIUM CARDS
+      ───────────────────────────────────────────────────────────────────────── */
+   .premium-card {
+     @apply bg-card rounded-xl border border-border transition-all duration-300;
+     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.03), 0 1px 2px -1px rgb(0 0 0 / 0.03);
+   }
+   
+   .premium-card:hover {
+     box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.06), 0 8px 10px -6px rgb(0 0 0 / 0.03);
+     @apply border-primary/15;
+   }
+ 
+   .metric-card {
+     @apply premium-card p-6;
+   }
+ 
+   .position-card {
+     @apply premium-card p-6;
+   }
+ 
+   .candidate-card {
+     @apply premium-card p-5;
+   }
+ 
+   /* ─────────────────────────────────────────────────────────────────────────
+      PRIORITY BADGES
+      ───────────────────────────────────────────────────────────────────────── */
+   .badge-critical {
+     @apply px-2.5 py-1 rounded-full text-xs font-semibold;
+     background: rgb(239 68 68 / 0.1);
+     color: rgb(185 28 28);
+     border: 1px solid rgb(239 68 68 / 0.2);
+   }
+ 
+   .badge-high {
+     @apply px-2.5 py-1 rounded-full text-xs font-semibold;
+     background: rgb(249 115 22 / 0.1);
+     color: rgb(194 65 12);
+     border: 1px solid rgb(249 115 22 / 0.2);
+   }
+   
+   .badge-medium {
+     @apply px-2.5 py-1 rounded-full text-xs font-semibold;
+     background: rgb(234 179 8 / 0.1);
+     color: rgb(161 98 7);
+     border: 1px solid rgb(234 179 8 / 0.2);
+   }
+   
+   .badge-low {
+     @apply px-2.5 py-1 rounded-full text-xs font-semibold;
+     background: rgb(34 197 94 / 0.1);
+     color: rgb(21 128 61);
+     border: 1px solid rgb(34 197 94 / 0.2);
+   }
+ 
+   /* ─────────────────────────────────────────────────────────────────────────
+      STEPPER COMPONENT
+      ───────────────────────────────────────────────────────────────────────── */
+   .stepper-step {
+     @apply w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300;
+   }
+ 
+   .stepper-step-active {
+     @apply bg-primary text-primary-foreground;
+     box-shadow: 0 0 0 4px hsl(209 61% 16% / 0.12), 0 4px 14px -2px hsl(209 61% 16% / 0.2);
+   }
+ 
+   .stepper-step-completed {
+     @apply bg-success text-success-foreground;
+   }
+ 
+   .stepper-step-pending {
+     @apply bg-muted text-muted-foreground border-2 border-border;
+   }
+ 
+   .stepper-line {
+     @apply h-0.5 mx-4 transition-all duration-500 rounded-full;
+   }
+ 
+   .stepper-line-active {
+     @apply bg-success;
+   }
+ 
+   .stepper-line-pending {
+     @apply bg-border;
+   }
+ 
+   /* ─────────────────────────────────────────────────────────────────────────
+      AVATAR WITH GRADIENT
+      ───────────────────────────────────────────────────────────────────────── */
+   .avatar-gradient {
+     @apply rounded-full flex items-center justify-center font-bold text-white;
+     background: linear-gradient(135deg, hsl(209 61% 16%) 0%, hsl(209 55% 28%) 100%);
+   }
+ 
+   /* ─────────────────────────────────────────────────────────────────────────
+      FORM SECTIONS
+      ───────────────────────────────────────────────────────────────────────── */
+   .form-section {
+     @apply bg-card rounded-xl border border-border p-8;
+     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.03);
+   }
+ 
+   .form-section-header {
+     @apply flex items-center gap-3 mb-6 pb-4 border-b border-border;
+   }
+ 
+   .form-section-icon {
+     @apply w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center;
+   }
+ 
+   /* ─────────────────────────────────────────────────────────────────────────
+      PILL BUTTONS (Multi-select)
+      ───────────────────────────────────────────────────────────────────────── */
+   .pill-button {
+     @apply px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border;
+   }
+ 
+   .pill-button-active {
+     @apply bg-primary text-primary-foreground border-primary;
+   }
+ 
+   .pill-button-inactive {
+     @apply bg-card text-foreground border-border hover:border-primary/40 hover:bg-accent;
+   }
+ 
+   /* ─────────────────────────────────────────────────────────────────────────
+      STATUS BADGES
+      ───────────────────────────────────────────────────────────────────────── */
+   .status-new {
+     @apply px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider;
+     background: rgb(59 130 246 / 0.1);
+     color: rgb(29 78 216);
+     border: 1px solid rgb(59 130 246 / 0.2);
+   }
+ 
+   .status-screening {
+     @apply px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider;
+     background: rgb(234 179 8 / 0.1);
+     color: rgb(161 98 7);
+     border: 1px solid rgb(234 179 8 / 0.2);
+   }
+ 
+   .status-interview {
+     @apply px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider;
+     background: rgb(168 85 247 / 0.1);
+     color: rgb(126 34 206);
+     border: 1px solid rgb(168 85 247 / 0.2);
+   }
+ 
+   .status-offer {
+     @apply px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider;
+     background: rgb(34 197 94 / 0.1);
+     color: rgb(21 128 61);
+     border: 1px solid rgb(34 197 94 / 0.2);
+   }
+ }
+ 
+ /* ═══════════════════════════════════════════════════════════════════════════
+    UTILITY CLASSES
+    ═══════════════════════════════════════════════════════════════════════════ */
+ 
+ @layer utilities {
+   /* Premium shadows */
+   .shadow-premium {
+     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+   }
+   
+   .shadow-premium-md {
+     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.04);
+   }
+   
+   .shadow-premium-lg {
+     box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.06), 0 8px 10px -6px rgb(0 0 0 / 0.03);
+   }
+ 
+   /* Animations */
+   .animate-fade-in {
+     animation: fadeIn 0.4s ease-out;
+   }
+   
+   .animate-slide-up {
+     animation: slideUp 0.5s ease-out;
+   }
+   
+   .animate-scale-in {
+     animation: scaleIn 0.3s ease-out;
+   }
+   
+   @keyframes fadeIn {
+     from {
+       opacity: 0;
+       transform: translateY(12px);
+     }
+     to {
+       opacity: 1;
+       transform: translateY(0);
+     }
+   }
+   
+   @keyframes slideUp {
+     from {
+       opacity: 0;
+       transform: translateY(24px);
+     }
+     to {
+       opacity: 1;
+       transform: translateY(0);
+     }
+   }
+   
+   @keyframes scaleIn {
+     from {
+       opacity: 0;
+       transform: scale(0.96);
+     }
+     to {
+       opacity: 1;
+       transform: scale(1);
+     }
+   }
+   
+   .animate-slide-in {
+     animation: slideIn 0.4s ease-out;
+   }
+   
+   @keyframes slideIn {
+     from {
+       opacity: 0;
+       transform: translateX(-16px);
+     }
+     to {
+       opacity: 1;
+       transform: translateX(0);
+     }
+   }
+ 
+   /* Gradient text */
+   .text-gradient-primary {
+     background: linear-gradient(135deg, hsl(209 61% 16%) 0%, hsl(209 55% 30%) 100%);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     background-clip: text;
+   }
+ 
+   /* Decorative backgrounds */
+   .bg-gradient-primary {
+     background: linear-gradient(135deg, hsl(209 61% 14%) 0%, hsl(209 55% 22%) 100%);
+   }
+   
+   .bg-gradient-subtle {
+     background: linear-gradient(180deg, hsl(220 20% 97%) 0%, hsl(220 14% 95%) 100%);
+   }
+ }
